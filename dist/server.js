@@ -17,6 +17,7 @@ const cors_1 = __importDefault(require("cors"));
 const db_1 = __importDefault(require("./config/db"));
 const league_routes_1 = __importDefault(require("./routes/league.routes"));
 const map_routes_1 = __importDefault(require("./routes/map.routes"));
+const calendar_routes_1 = __importDefault(require("./routes/calendar.routes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -43,6 +44,7 @@ class Server {
         });
         this.app.use('/leagues', league_routes_1.default);
         this.app.use('/maps', map_routes_1.default);
+        this.app.use('/calendars', calendar_routes_1.default);
     }
     dbConnect() {
         return __awaiter(this, void 0, void 0, function* () {

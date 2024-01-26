@@ -4,6 +4,7 @@ import db from './config/db';
 
 import router from './routes/league.routes';
 import routerMap from './routes/map.routes';
+import routerCalendar from './routes/calendar.routes';
 
 
 class Server {
@@ -40,6 +41,7 @@ class Server {
         })
         this.app.use('/leagues', router);
         this.app.use('/maps', routerMap);
+        this.app.use('/calendars', routerCalendar);
     }
 
 
