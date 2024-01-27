@@ -21,6 +21,10 @@ const Map = db.define('Map', {
         type: DataTypes.FLOAT,
         allowNull: false,
     },
+    stadium: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
    
 },{
     createdAt: false,

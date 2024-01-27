@@ -24,6 +24,10 @@ const Map = db_1.default.define('Map', {
         type: sequelize_1.DataTypes.FLOAT,
         allowNull: false,
     },
+    stadium: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
+    },
 }, {
     createdAt: false,
     updatedAt: false,
