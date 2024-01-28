@@ -64,7 +64,7 @@ const postLeague = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     catch (error) {
         console.log(error);
         res.json({
-            msg: 'Ups! Connect to support...'
+            msg: 'Connect to support...'
         });
     }
 });
@@ -90,7 +90,7 @@ const updateLeague = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     catch (error) {
         console.log(error);
         res.json({
-            msg: 'Ups! Connect to support...'
+            msg: 'Connect to support...'
         });
     }
 });

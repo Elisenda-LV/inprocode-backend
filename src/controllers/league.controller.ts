@@ -58,7 +58,7 @@ export const postLeague = async (req: Request, res: Response) => {
     } catch (error){
         console.log(error);
         res.json({
-            msg: 'Ups! Connect to support...'
+            msg: 'Connect to support...'
         })
     }
   
@@ -87,7 +87,7 @@ export const updateLeague = async (req: Request, res: Response) => {
     } catch (error){
         console.log(error);
         res.json({
-            msg: 'Ups! Connect to support...'
+            msg: 'Connect to support...'
         })
     }
    
