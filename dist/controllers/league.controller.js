@@ -38,26 +38,12 @@ const getLeague = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getLeague = getLeague;
 //Delete league:
 const deleteLeague = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    /*  const { id } = req.params;
-     const league = await League.findByPk(id);
- 
-     if(league){
-         await league.destroy();
-         res.json({
-             msg: 'League deleted'
-         })
-         
-     } else {
-         res.status(404).json({
-             msg: `There is no league with that id ${id}`
-         })
-     } */
     try {
         const { id } = req.params;
         const errors = (0, express_validator_1.validationResult)(req);
         //If there are validation errors, respond with a 400 Bad Request status.
         if (!errors.isEmpty()) {
-            return res.status(404).json({ errors: errors.array() });
+            return res.status(400).json({ errors: errors.array() });
         }
         else {
             const league = yield league_model_1.default.findByPk(id);

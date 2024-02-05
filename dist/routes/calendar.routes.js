@@ -2,10 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const calendar_controller_1 = require("../controllers/calendar.controller");
+const generic_validation_1 = require("../validations/generic.validation");
+const calendar_validation_1 = require("../validations/calendar.validation");
 const routerCalendar = (0, express_1.Router)();
 routerCalendar.get('/', calendar_controller_1.getMatches);
-routerCalendar.get('/:id', calendar_controller_1.getMatch);
-routerCalendar.delete('/:id', calendar_controller_1.deleteMatch);
-routerCalendar.post('/', calendar_controller_1.postMatch);
-routerCalendar.put('/:id', calendar_controller_1.updateMatch);
+routerCalendar.get('/:id', generic_validation_1.idValidator, calendar_controller_1.getMatch);
+routerCalendar.delete('/:id', generic_validation_1.idValidator, calendar_controller_1.deleteMatch);
+routerCalendar.post('/', calendar_validation_1.calendarValidators, calendar_controller_1.postMatch);
+routerCalendar.put('/:id', generic_validation_1.idValidator, calendar_validation_1.calendarValidators, calendar_controller_1.updateMatch);
 exports.default = routerCalendar;

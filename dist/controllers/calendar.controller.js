@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateMatch = exports.postMatch = exports.deleteMatch = exports.getMatch = exports.getMatches = void 0;
 const calendar_model_1 = __importDefault(require("../models/calendar.model"));
+const express_validator_1 = require("express-validator");
 //Show events:
 const getMatches = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const matches = yield calendar_model_1.default.findAll();
@@ -36,33 +37,49 @@ const getMatch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getMatch = getMatch;
 //Delete event:
 const deleteMatch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
-    const match = yield calendar_model_1.default.findByPk(id);
-    if (match) {
-        yield match.destroy();
-        res.json({
-            msg: 'Match deleted'
-        });
+    try {
+        const { id } = req.params;
+        const errors = (0, express_validator_1.validationResult)(req);
+        //If there are validation errors, respond with a 400 Bad Request status.
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        else {
+            const league = yield calendar_model_1.default.findByPk(id);
+            yield league.destroy();
+            res.json({
+                msg: 'Event deleted'
+            });
+        }
     }
-    else {
-        res.status(404).json({
-            msg: `There is no match with that id ${id}`
+    catch (error) {
+        console.error(error);
+        res.status(500).json({
+            msg: 'Connect to support...'
         });
     }
 });
 exports.deleteMatch = deleteMatch;
 //Add a new event:
 const postMatch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { body } = req;
     try {
-        yield calendar_model_1.default.create(body);
-        res.json({
-            msg: 'Match added'
-        });
+        const errors = (0, express_validator_1.validationResult)(req);
+        //If there are validation errors, respond with a 400 Bad Request status.
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        else {
+            const { body } = req;
+            yield calendar_model_1.default.create(body);
+            res.json({
+                msg: 'Event added',
+                data: body,
+            });
+        }
     }
     catch (error) {
         console.log(error);
-        res.json({
+        res.status(500).json({
             msg: 'Connect to support...'
         });
     }
