@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "tsc --build --force && node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "author": "Elisenda",
   "license": "ISC",
