@@ -1,4 +1,4 @@
-# Backend de Nodejs
+# Inprocode: API Rest - Node js.
 
 API Rest desarrollada con Node.js, Express y Sequelize para conectarse a una base de datos de MariaDB.
 
@@ -16,19 +16,13 @@ Para instalar este proyecto, sigue estos pasos:
 Para ejecutar el proyecto, utiliza el siguiente comando:
 
 ```
-npm run start
-
-```
-Para ejecutar el proyecto en dev, utiliza el siguiente comando:
-
-```
-npm run dev
+npm start
 
 ```
 
 ## Endpoints de la API:
 
-Leagues
+### Leagues
 
 GET /leagues: Obtiene todas las ligas.
 GET /leagues/:id: Obtiene las ligas por ID.
@@ -39,7 +33,7 @@ DELETE /leagues/:id: Elimina una liga.
 Nota: Reemplaza :id con el ID de la liga correspondiente.
 
 
-Calendar
+### Calendar
 
 GET /calendars: Obtiene todos los eventos.
 GET /calendars/:id: Obtiene los eventos por ID.
@@ -50,7 +44,7 @@ DELETE /calendars/:id: Elimina un evento.
 Nota: Reemplaza :id con el ID del evento correspondiente.
 
 
-Map
+### Map
 
 GET /maps: Obtiene todos los estadios.
 GET /maps/:id: Obtiene estadios por ID.
@@ -58,10 +52,9 @@ GET /maps/:id: Obtiene estadios por ID.
 Nota: Reemplaza :id con el ID de la liga correspondiente.
 
 
-Graphic
+### Graphic
 
 GET /graphics: Obtiene todos los datos para mostrar en el gráfico.
-
 
 
 ## Contribución
